@@ -34,3 +34,26 @@ If you need more control, you can construct your own key/value pairs. The key sh
 The value in the key/value pair should be an array containing two or more strings. All but the last string in this array are the names of the package directories containing the syntax file and the last is the name of the syntax. Root around in Sublime Text's directory structure to find files that end with `.sublime-syntax` or `.tmLanguage`. The names of these files (minus the `.sublime-syntax`/`.tmLanguage` extension) are what you would use for the last string. Typically, you will only have two strings, a directory name and the syntax file name (minus `.sublime-syntax`/`.tmLanguage` file extension), but this is dependent on the package's directory structure.
 
 More info about projects and the project file format can be found at the [Sublime Text website](https://www.sublimetext.com/docs/3/projects.html) and at the [Sublime Text Unofficial Documentation website](http://docs.sublimetext.info/en/latest/file_management/projects.html).
+
+
+## Installation
+
+### By Package Control
+
+1. Download & Install `Sublime Text 3` (https://www.sublimetext.com/3)
+1. Go to the menu `Tools -> Install Package Control`, then,
+   wait few seconds until the `Package Control` installation finishes
+1. Go to the menu `Preferences -> Package Control`
+1. Type `Package Control Add Channel` on the opened quick panel and press <kbd>Enter</kbd>
+1. Then, input the following address and press <kbd>Enter</kbd>
+   ```
+   https://raw.githubusercontent.com/evandrocoan/StudioChannel/master/channel.json
+   ```
+1. Now, go again to the menu `Preferences -> Package Control`
+1. This time type `Package Control Install Package` on the opened quick panel and press <kbd>Enter</kbd>
+1. Then, search for `ProjectSpecificSyntax` and press <kbd>Enter</kbd>
+
+See also:
+1. [ITE - Integrated Toolset Environment](https://github.com/evandrocoan/ITE)
+1. [Package control docs](https://packagecontrol.io/docs/usage) for details.
+
