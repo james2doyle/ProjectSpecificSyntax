@@ -31,8 +31,14 @@ class ProjectSpecificSyntax(sublime_plugin.EventListener):
         syntax_settings = project_data.get('syntax_override', {})
 
         for regex, syntax in syntax_settings.items():
-            if re.search(regex, filename):
-                return syntax
+            try:
+                if re.search(regex, filename):
+                    return syntax
+            except Exception as e:
+                sublime.error_message(
+                    "Issues parsing regex pattern {0} for {1}".format(regex, " ".join(syntax))
+                )
+                raise e
 
         return None
 
