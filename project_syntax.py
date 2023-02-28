@@ -92,7 +92,7 @@ class ProjectSpecificSyntaxToClipboardCommand(sublime_plugin.TextCommand):
         match = re.search(r'^Packages/(.*)\.(tmLanguage|sublime-syntax)$', syntax)
 
         if not match:
-            print('Syntax does not match expected format: {0}'.format(syntax))
+            sublime.error_message('Syntax does not match expected format: {0}'.format(syntax))
             return None
 
         return match.group(1).split('/')
