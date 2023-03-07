@@ -45,14 +45,17 @@ class ProjectSpecificSyntax(sublime_plugin.EventListener):
     def _set_syntax(self, view, syntax):
         syntax_path = '/'.join(syntax)
 
+        current_syntax = view.settings().get('syntax')
+
         # prefer the newer .sublime-syntax files over .tmLanguage
         ss_path = 'Packages/{0}.sublime-syntax'.format(syntax_path)
-        if os.path.isfile(ss_path):
-            view.set_syntax_file(ss_path)
-        else:
-            view.set_syntax_file('Packages/{0}.tmLanguage'.format(syntax_path))
+        if sublime.syntax_from_path(ss_path) == 'None':
+            ss_path = 'Packages/{0}.tmLanguage'.format(syntax_path)
 
-        print('Switched syntax to: {0}'.format(syntax_path))
+        # only switch the syntax if one exists and it is different from the current one
+        if current_syntax != ss_path and sublime.syntax_from_path(ss_path) != 'None':
+            view.set_syntax_file(ss_path)
+            print('Switched syntax to: {0}'.format(syntax_path))
 
 
 class ProjectSpecificSyntaxToClipboardCommand(sublime_plugin.TextCommand):
